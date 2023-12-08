@@ -1,7 +1,7 @@
 const $ = (selector, parent = document) => parent.querySelector(selector); 
 const $$ = (selector, parent = document) => parent.querySelectorAll(selector);
 const sources = {
-	'interview': 10,
+	'interview': 13,
 	'family': 6,
 	'health': 6,
 	'hobby': 3,
