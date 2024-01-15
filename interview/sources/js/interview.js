@@ -1,14 +1,5 @@
 const $ = (selector, parent = document) => parent.querySelector(selector); 
 const $$ = (selector, parent = document) => parent.querySelectorAll(selector);
-const sources = {
-	'interview': 16,
-	'family': 6,
-	'health': 6,
-	'hobby': 3,
-	'sport': 6,
-	'routine': 9,
-	'fashion': 6
-};
 
 const fulledTopic = [];
 const stateTopic = {};
@@ -54,7 +45,7 @@ const model = {
 	},
 	play: function(songName, topicName) {
 		const audio = document.createElement('audio');
-		const songPath = `../${topicName}/${songName}.mp3`;
+		const songPath = `${rootPath}/${topicName}/${songName}.mp3`;
 		audio.src = songPath;
 		audio.play();
 	}
