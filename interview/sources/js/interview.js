@@ -96,6 +96,13 @@ const view = {
 	},
 	selectAllTopic: function() {
 		$('#all').checked = true;
+	},
+	renderReloadBtn: function() {
+		const reloadBtn = document.createElement('button');
+		reloadBtn.classList.add('reload');
+		reloadBtn.innerText = 'Reload';
+		$('.app').appendChild(reloadBtn);
+		reloadBtn.onclick = () => location.reload();
 	}
 };
 
@@ -119,6 +126,7 @@ const controller = {
 };
 
 
+
 /* event */
 $('button').onclick = function() {
 	controller['nextSong']();
@@ -127,4 +135,4 @@ $('button').onclick = function() {
 
 /* main */
 view.renderListTopic();
-
+view.renderReloadBtn();

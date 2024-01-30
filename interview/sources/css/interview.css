@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--primaryColor: #71be34;
+}
+
 body {
 	height: 100vh;
 	display: flex;
@@ -35,7 +39,7 @@ body {
 	padding: 12px 36px;
 	border: none;
 	color: white;
-	background: #71be34;
+	background: var(--primaryColor);
 	font-weight: bold;
 	border-radius: 2px;
 }
@@ -44,3 +48,16 @@ body {
 	opacity: 0.7;
 	cursor: pointer;
 }
+
+.reload {
+	position: fixed;
+	top: 8px;
+	right: 8px;
+	background: var(--primaryColor);
+	opacity: 0.75;
+	padding: 10px 14px;
+	border-radius: 9999px;
+	border: none;
+	color: white;
+}
+
