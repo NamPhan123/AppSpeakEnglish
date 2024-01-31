@@ -132,7 +132,7 @@ $('button').onclick = function() {
 	controller['nextSong']();
 }
 
-$('body').onclick = function({target:element}) {
+$('.container').onclick = function({target:element}) {
 	if(element === this) $('.button').click();
 }
 
