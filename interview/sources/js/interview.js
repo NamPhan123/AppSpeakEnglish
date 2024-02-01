@@ -3,6 +3,7 @@ const $$ = (selector, parent = document) => parent.querySelectorAll(selector);
 
 const fulledTopic = [];
 const stateTopic = {};
+const audio = document.createElement('audio');
 
 const util = {
 	topicIsFulled: function(topicName) {
@@ -12,7 +13,8 @@ const util = {
 		return 1 + Math.floor(n * Math.random());
 	},
 	usedSong: function(songName, topicName) {
-		return stateTopic[topicName] && stateTopic[topicName].includes(songName);
+		return stateTopic[topicName] && 
+			   stateTopic[topicName].includes(songName);
 	},
 	addUsedSongToTopic: function(songName, topicName) {
 		let listSongOfTopic = stateTopic[topicName];
@@ -44,7 +46,6 @@ const model = {
 		return songName;
 	},
 	play: function(songName, topicName) {
-		const audio = document.createElement('audio');
 		const songPath = `${rootPath}/${topicName}/${songName}.mp3`;
 		audio.src = songPath;
 		audio.play();
@@ -96,19 +97,17 @@ const view = {
 	},
 	selectAllTopic: function() {
 		$('#all').checked = true;
-	},
-	renderReloadBtn: function() {
-		const reloadBtn = document.createElement('button');
-		reloadBtn.classList.add('reload');
-		reloadBtn.innerText = 'Reload';
-		$('.app').appendChild(reloadBtn);
-		reloadBtn.onclick = () => location.reload();
 	}
 };
 
 
 const controller = {
+	isFree: true,
 	nextSong: function() {
+		if(!this.isFree) return;
+
+		// only one file for every time
+		this.isFree = false;
 		let topicName = null;
 		let songName = null;
 		do {
@@ -132,11 +131,15 @@ $('button').onclick = function() {
 	controller['nextSong']();
 }
 
+$('.reload').onclick = () => location.reload();
+
 $('.container').onclick = function({target:element}) {
 	if(element === this) $('.button').click();
 }
 
+audio.onended = () => controller.isFree = true;
+
 
 /* main */
 view.renderListTopic();
-view.renderReloadBtn();
+
