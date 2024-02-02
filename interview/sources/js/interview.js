@@ -131,8 +131,6 @@ $('button').onclick = function() {
 	controller['nextSong']();
 }
 
-$('.reload').onclick = () => location.reload();
-
 $('.container').onclick = function({target:element}) {
 	if(element === this) $('.button').click();
 }
