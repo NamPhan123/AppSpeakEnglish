@@ -89,6 +89,7 @@ const view = {
 				topicName = listTopicName[util.randomFrom1ToN(listTopicName.length)-1];
 			} while(util.topicIsFulled(topicName));
 		}
+		
 		return topicName;
 	},
 	removeTopic: function(topicName) {
@@ -106,7 +107,7 @@ const controller = {
 	nextSong: function() {
 		if(!this.isFree) return;
 
-		// only one file for every time
+		// playing only one file at the same time
 		this.isFree = false;
 		let topicName = null;
 		let songName = null;
